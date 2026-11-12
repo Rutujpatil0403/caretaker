@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuarantineCare MVP — Daily Triage, Visits &amp; Discharge Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Navigation / Role Switcher -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">QC</div>
+        <div>
+          <h1>QuarantineCare <span class="badge-mvp">MVP v1</span></h1>
+          <p class="subtitle">74-Bed Virus Quarantine &amp; Treatment Facility</p>
+        </div>
+      </div>
+
+      <div class="topbar-controls">
+        <div class="sim-pill">
+          <span class="sim-label">Facility Day:</span>
+          <strong id="currentDayLabel">Day 5</strong>
+          <button id="advanceDayBtn" class="btn btn-sm btn-outline" title="Simulate moving to the next day">
+            + Next Day
+          </button>
+        </div>
+
+        <div class="role-switcher" role="group" aria-label="Switch user role">
+          <button class="role-btn active" data-role="nurse">Nurse</button>
+          <button class="role-btn" data-role="doctor">Doctor</button>
+          <button class="role-btn" data-role="admin">Admin Staff</button>
+          <button class="role-btn" data-role="head_doctor">Head Doctor</button>
+          <button class="role-btn" data-role="workflow">App Flow &amp; Logic</button>
+        </div>
+
+        <button id="resetDemoBtn" class="btn btn-sm btn-ghost" title="Reset facility demo data">
+          Reset Demo
+        </button>
+      </div>
+    </header>
+
+    <!-- Global Alert Banner (e.g., Mortality > 15% or Full Capacity) -->
+    <div id="globalAlertBar" class="global-alert hidden" role="alert"></div>
+
+    <!-- Live Facility Summary Strip -->
+    <section class="summary-strip" id="summaryStrip" aria-label="Live facility KPIs"></section>
+
+    <!-- Main Content Area (Rendered by Active Role/View) -->
+    <main class="main-content" id="mainContent"></main>
+  </div>
+
+  <!-- Modal Container -->
+  <div id="modalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h2 id="modalTitle">Modal Title</h2>
+          <p id="modalSubtitle" class="modal-subtitle"></p>
+        </div>
+        <button id="modalCloseBtn" class="icon-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
